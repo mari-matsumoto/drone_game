@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style copy.css">
+    <title>copy-ドローンゲーム⌘</title>
+
+</head>
+<body>
+    <h1>ドローンを操縦して、プレゼントを当てよう！</h1>
+
+    <div id="game-container">
+        <img id="drone" src="./png/drone-red.png" alt="Drone" style="position: absolute; left: 150px; top: 100px; width: 200px; height: 100px;">
+        <div id="present-boxes">
+            <img src="./png/223660.png" alt="Red Present Box" class="present-box" style="position: absolute; left: 100px; top: 500px; width: 200px; height: 200px;">
+            <img src="./png/223661.png" alt="Yellow Present Box" class="present-box" style="position: absolute; left: 400px; top: 500px; width: 200px; height: 200px;">
+            <img src="./png/223664.png" alt="Blue Present Box" class="present-box" style="position: absolute; left: 700px; top: 500px; width: 200px; height: 200px;">
+            <img src="./png/223665.png" alt="Green Present Box" class="present-box" style="position: absolute; left: 1000px; top: 500px; width: 200px; height: 200px;">
+        </div>
+    </div>
+    <div id="controls">
+        <button onclick="moveDrone('up')">Up</button>
+        <button onclick="moveDrone('down')">Down</button>
+        <button onclick="moveDrone('left')">Left</button>
+        <button onclick="moveDrone('right')">Right</button>
+        <button id="resetButton">Reset Game</button> <!-- リセットボタンの追加 -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
