@@ -1,1 +1,1 @@
-# drone_game
+# kadai01_janken
