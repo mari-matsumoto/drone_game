@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const drone = document.getElementById('drone');
     const presentBoxes = document.querySelectorAll('.present-box');
-    
     const resultImages = ['./png/hawaii_tour.png', './png/macbook_air.png', './png/wineset2.png', './png/tawashi.png'];
     const resetButton = document.getElementById('resetButton');
+    resetButton.addEventListener('click', resetGame); // リセットボタンのクリックイベントにリセット機能をバインド
+
     const step = 100;
 
-    window.moveDrone = function(direction) {
+    window.moveDrone = function(direction) {  //　ドローンが画面の指示した方向に動く
         let posX = parseInt(drone.style.left, 10);
         let posY = parseInt(drone.style.top, 10);
 
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         checkForDrop();
     };
 
-    function checkForDrop() {
+    function checkForDrop() {   //ドローン画像が、プレゼントボックス画像に入ったかどうかの判断をする 
         const droneRect = drone.getBoundingClientRect();
         presentBoxes.forEach(box => {
             const boxRect = box.getBoundingClientRect();
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function showRandomPrize() {
+    function showRandomPrize() {  // 景品をランダムに表示させる
         const randomIndex = Math.floor(Math.random() * resultImages.length);
         const prizeImage = document.createElement('img');
         prizeImage.src = resultImages[randomIndex];
@@ -49,27 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
         drone.style.display = 'none';
         presentBoxes.forEach(box => box.style.display = 'none');
     }
-    resetButton.addEventListener('click', resetGame); // リセットボタンのクリックイベントにリセット機能をバインド
 
     function resetGame() {
-        // ドローンを初期位置に戻す
         drone.style.left = '150px';
         drone.style.top = '100px';
         drone.style.display = 'block'; // ドローンを表示
-
-
-        // 全てのプレゼントボックスを表示
+    
         presentBoxes.forEach(box => {
-            box.style.display = 'block';
+            box.style.display = 'block'; // 全てのプレゼントボックスを表示
         });
-
+    
         // 画面からすべての景品画像を削除
         document.querySelectorAll('img').forEach(img => {
-            if (img !== drone && !presentBoxes.includes(img)) {
+            if (img !== drone && !Array.from(presentBoxes).some(box => box === img)) {
                 img.remove();
-                
             }
-            
         });
     }
 
